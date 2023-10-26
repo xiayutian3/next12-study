@@ -1,20 +1,21 @@
 import { useRouter } from "next/router";
 
-export default function PostId({ post }) {
+export default function ProductId({ product }) {
 
   const router = useRouter()
-  //后备页面
+  // //后备页面
   if(router.isFallback) {
     return <h1>加载中.....</h1>
   }
 
   return (
     <>
-      <h1>PostId 详情页</h1>
+      <h1>product 详情页</h1>
       <h2>
-        {post.id}--{post.title}
+        {product.id}--{product.title}
       </h2>
-      <p>{post.body}</p>
+      <p>{product.price}</p>
+      <p>{product.description}</p>
     </>
   );
 }
@@ -23,25 +24,20 @@ export default function PostId({ post }) {
 // 只在服务端运行。
 // 只能用预预渲染，不能用于客户端数据获取
 export async function getStaticProps(context) {
+  // console.log('后台重新生成新的页面版本')
   const { params } = context;
   const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params.postId}`
+    `http://localhost:4000/products/${params.productId}`
   );
   const data = await res.json();
   // console.log("data: ", data);
 
-  //如果data中不存在id ，id 1-100，结果来个 输入 id 120
-  // 会返回 404页面
-  if(!data.id){
-    return {
-      notFound: true
-    }
-  }
-
   return {
     props: {
-      post: data,
+      product: data,
     },
+    revalidate: 20  //isr  静态增量更新  //20秒后，刷新页面会重新生成，静态页面，在20内刷新页面不会变化，用的是缓存
+
   };
 }
 
@@ -51,7 +47,7 @@ export async function getStaticPaths() {
   // const data = await res.json();
 
   // const paths = data.map((post) => ({
-  //   params: { postId: post.id + "" },
+  //   params: { productId: post.id + "" },
   // }));
 
   // return {
@@ -66,14 +62,14 @@ export async function getStaticPaths() {
   return {
     paths: [ //处理要渲染的路径
       {
-        params: { postId: "1" },
+        params: { productId: "1" },
       },
-      {
-        params: { postId: "2" },
-      },
-      {
-        params: { postId: "3" },
-      },
+      // {
+      //   params: { productId: "2" },
+      // },
+      // {
+      //   params: { productId: "3" },
+      // },
     ],
     fallback: true,
   };
