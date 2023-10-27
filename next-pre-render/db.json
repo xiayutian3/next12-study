@@ -1,4 +1,82 @@
 {
+  "events":[
+    {
+      "id": 1,
+      "title": "events 1",
+      "description": "description 1",
+      "category": "sport",
+      "date":"01"
+    },
+    {
+      "id": 2,
+      "title": "events 2",
+      "description": "description 2",
+      "category": "math",
+      "date":"02"
+    },
+    {
+      "id": 3,
+      "title": "events 3",
+      "description": "description 3",
+      "category": "math",
+      "date":"03"
+    },
+    {
+      "id": 4,
+      "title": "events 4",
+      "description": "description 4",
+      "category": "sport",
+      "date":"04"
+    },
+    {
+      "id": 5,
+      "title": "events 5",
+      "description": "description 5",
+      "category": "sport",
+      "date":"05"
+    },
+    {
+      "id": 6,
+      "title": "events 6",
+      "description": "description 6",
+      "category": "sport",
+      "date":"06"
+    },
+    {
+      "id": 7,
+      "title": "events 7",
+      "description": "description 7",
+      "category": "sport",
+      "date":"07"
+    },
+    {
+      "id": 8,
+      "title": "events 8",
+      "description": "description 8",
+      "category": "sport",
+      "date":"08"
+    },
+    {
+      "id": 9,
+      "title": "events 9",
+      "description": "description 9",
+      "category": "sport",
+      "date":"09"
+    },
+    {
+      "id": 10,
+      "title": "events 10",
+      "description": "description 10",
+      "category": "sport",
+      "date":"10"
+    }
+  ],
+  "dashboard":{
+    "posts":5,
+    "likes":100,
+    "followers":20,
+    "following":50
+  },
   "news": [
     {
       "id": 1,
